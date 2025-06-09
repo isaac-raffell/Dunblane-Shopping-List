@@ -169,7 +169,7 @@ header h1 {
 @media (max-width: 500px) {
 
   body {
-    min-height: 75vh;
+    min-height: 85vh;
   }
   .container {
     border: none;
