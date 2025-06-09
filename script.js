@@ -5,6 +5,7 @@ const itemList = document.querySelector('#item-list');
 const clearButton = document.querySelector('#clear');
 const itemFilter = document.querySelector('#filter');
 const formBtn = itemForm.querySelector ('button');
+const checkbox = document.querySelector('.checkbox');
 let isEditMode = false;
 
 
@@ -51,12 +52,22 @@ function addItemToDom(item) {
         //Create list item
     const li = document.createElement('li');
     li.appendChild(document.createTextNode(item))
-    li.appendChild(createButton('remove-item btn-link text-red'))
+    li.appendChild(createCheckBox('checkbox'))
+    li.appendChild(createRemoveButton('remove-item btn-link text-red'))
     itemList.appendChild(li);
 }
 
 
-function createButton(classes) {
+function createCheckBox(classes) {
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.className = classes;
+    checkbox.id = 'checked';
+    return checkbox;
+}
+
+
+function createRemoveButton(classes) {
     const button = document.createElement('button');
     button.className = classes;
     button.appendChild(createIcon('fa-solid fa-xmark'))
@@ -110,6 +121,9 @@ function checkIfItemExists (item) {
 
 
 function setItemToEdit(item) {
+    if (item.type === 'checkbox') {
+        isEditMode = false;
+    } else {
     isEditMode = true;
 
     itemList.querySelectorAll('li').forEach(i => i.classList.remove('edit-mode'));
@@ -118,6 +132,7 @@ function setItemToEdit(item) {
     formBtn.innerHTML = '<i style="margin-right: 5px;" class="edit-icon fa-solid fa-pen"></i> Update Item'
     formBtn.style.backgroundColor = '#228b22'
     itemInput.value = item.textContent;
+    }
 }
 
 
@@ -193,6 +208,17 @@ function checkUI() {
     isEditMode = false;
 }
 
+function isCollected(e) {
+  const checkbox = e.target;
+
+  if (checkbox.checked) {
+    e.target.parentElement.style.opacity = '0.5'
+  } else {
+    e.target.parentElement.style.opacity = '1'
+  }
+  checkUI();
+}
+
 // Initialise App
 
 function init() {
@@ -201,6 +227,13 @@ itemList.addEventListener('click', onClickItem);
 clearButton.addEventListener('click', clearItems);
 itemFilter.addEventListener('input', filterItems);
 document.addEventListener('DOMContentLoaded', displayItems);
+itemList.addEventListener('change', function (e) {
+  if (e.target && e.target.matches('input[type="checkbox"].checkbox')) {
+    isCollected(e);
+  }
+  checkUI();
+});
+
 checkUI();
 }
 

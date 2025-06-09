@@ -149,6 +149,8 @@ header h1 {
 }
 
 .items li {
+  position: relative;
+  align-items: center;
   transition: 0.2s ease;
   display: flex;
   justify-content: space-between;
@@ -164,6 +166,12 @@ header h1 {
   transition: 0.2s ease;
   background-color: #222;
   
+}
+
+.checkbox {
+  position: absolute; 
+  right: 40px;
+  margin-top:-2px;
 }
 
 @media (max-width: 500px) {
