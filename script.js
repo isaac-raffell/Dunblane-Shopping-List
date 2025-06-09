@@ -123,7 +123,7 @@ function setItemToEdit(item) {
 
 //Remove item from list
 function removeItem(item) {
-    if(confirm('Are You Sure')) {
+    if(confirm('Are You Sure?')) {
         //remove item from DOM
         item.remove();
 
