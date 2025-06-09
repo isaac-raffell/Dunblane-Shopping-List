@@ -147,11 +147,12 @@ function removeItemFromStorage(item) {
 
 //Clear button functionality
 function clearItems(){
-    alert('Are You Sure?');
+    if (confirm('Are You Sure?')) {
     
     while (itemList.firstChild) {
         itemList.removeChild(itemList.firstChild);
     }
+}
 
     // Clear from local storage
     localStorage.removeItem('items');

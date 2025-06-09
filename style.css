@@ -46,6 +46,7 @@ footer {
   padding: 10px 20px 10px 20px;
   border-radius: 5px;
   border: 1px solid #333;
+  margin-bottom: 60px;
 }
 
 header h1 {
@@ -175,6 +176,10 @@ header h1 {
   header {
     flex-direction: column;
   }
+
+  .footer-div {
+  margin-bottom: 5px;
+}
   .items li {
     width: 100%;
   }
