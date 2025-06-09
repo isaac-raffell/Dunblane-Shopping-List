@@ -167,6 +167,10 @@ header h1 {
 }
 
 @media (max-width: 500px) {
+
+  body {
+    min-height: 75vh;
+  }
   .container {
     border: none;
     background-color: transparent;
