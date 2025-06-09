@@ -115,7 +115,7 @@ function setItemToEdit(item) {
     itemList.querySelectorAll('li').forEach(i => i.classList.remove('edit-mode'));
 
     item.classList.add('edit-mode');
-    formBtn.innerHTML = '<i class="fa-solid fa-pen"></i> Update Item'
+    formBtn.innerHTML = '<i style="margin-right: 5px;" class="edit-icon fa-solid fa-pen"></i> Update Item'
     formBtn.style.backgroundColor = '#228b22'
     itemInput.value = item.textContent;
 }
@@ -147,6 +147,8 @@ function removeItemFromStorage(item) {
 
 //Clear button functionality
 function clearItems(){
+    alert('Are You Sure?');
+    
     while (itemList.firstChild) {
         itemList.removeChild(itemList.firstChild);
     }
